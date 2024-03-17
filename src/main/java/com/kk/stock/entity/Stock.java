@@ -1,10 +1,19 @@
 package com.kk.stock.entity;
 
+import java.util.Set;
+
+import org.hibernate.annotations.Where;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
 
 @Entity
 public class Stock {
@@ -19,12 +28,17 @@ public class Stock {
 	@Column(nullable = false,unique = true)
 	private String symbol;
 	private String description;
-	private Long price;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "stock_id")
+	@Where(clause = "DATEDIFF(NOW(), date) <= 5")
+	@OrderBy(value = "date desc")
+	private Set<StockPrice> stockPrices;
 
 	public Long getId() {
 		return id;
 	}
-
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -53,12 +67,13 @@ public class Stock {
 		this.description = description;
 	}
 
-	public Long getPrice() {
-		return price;
+	public Set<StockPrice> getStockPrices() {
+		return stockPrices;
 	}
 
-	public void setPrice(Long price) {
-		this.price = price;
+	public void setStockPrices(Set<StockPrice> stockPrices) {
+		this.stockPrices = stockPrices;
 	}
+
 
 }

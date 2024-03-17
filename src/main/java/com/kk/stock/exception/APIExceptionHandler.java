@@ -16,7 +16,7 @@ public class APIExceptionHandler extends ResponseEntityExceptionHandler{
 	@ExceptionHandler({StockNotFoundException.class})
 	ResponseEntity<ErrorMessage> handleStockNotFoundException(StockNotFoundException exp){
 		ErrorMessage errMessage = new ErrorMessage();
-		errMessage.setCode("10001");
+		errMessage.setCode("STOCK_1001");
 		errMessage.setMessage(exp.getMessage());
 		return new ResponseEntity<ErrorMessage>(errMessage, HttpStatus.BAD_REQUEST);
 	}
@@ -24,7 +24,7 @@ public class APIExceptionHandler extends ResponseEntityExceptionHandler{
 	@ExceptionHandler({DuplicateStockException.class})
 	ResponseEntity<ErrorMessage> handleDuplicateStockException(DuplicateStockException exp){
 		ErrorMessage errMessage = new ErrorMessage();
-		errMessage.setCode("10002");
+		errMessage.setCode("STOCK_1002");
 		errMessage.setMessage(exp.getMessage());
 		return new ResponseEntity<ErrorMessage>(errMessage, HttpStatus.BAD_REQUEST);
 	}
