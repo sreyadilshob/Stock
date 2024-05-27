@@ -1,6 +1,9 @@
 package com.kk.stock.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -15,7 +18,7 @@ public class StockPrice {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private Date date;
+	private LocalDate date;
 	private Double open;
 	private Double high;
 	private Double low;
@@ -26,10 +29,10 @@ public class StockPrice {
 	@ManyToOne
 	private Stock stock; 
 	
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 	public Double getOpen() {
@@ -73,5 +76,35 @@ public class StockPrice {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	@Override
+	public int hashCode() {
+	    return new HashCodeBuilder()
+	            .append(date)
+	            .append(open)
+	            .append(high)
+	            .append(low)
+	            .append(close)
+	            .append(volume)
+	            .toHashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+	    if (obj instanceof StockPrice) {
+	        final StockPrice spobj = (StockPrice) obj;
+
+	        return new EqualsBuilder()
+	                .append(date, spobj.date)
+	                .append(open, spobj.open)
+	                .append(low, spobj.low)
+	                .append(high, spobj.high)
+	                .append(close, spobj.close)
+	                .append(volume, spobj.volume)
+	                .isEquals();
+	    } else {
+	        return false;
+	    }
 	}
 }

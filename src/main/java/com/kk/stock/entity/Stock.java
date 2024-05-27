@@ -31,8 +31,8 @@ public class Stock {
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "stock_id")
-	@Where(clause = "DATEDIFF(NOW(), date) <= 5")
-	@OrderBy(value = "date desc")
+	//@Where(clause = "DATEDIFF(NOW(), date) <= 5")
+	//@OrderBy(value = "date desc")
 	private Set<StockPrice> stockPrices;
 
 	public Long getId() {

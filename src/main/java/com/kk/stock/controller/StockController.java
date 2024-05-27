@@ -48,8 +48,12 @@ public class StockController {
 
 	@PostMapping
 	ResponseEntity<Stock> saveStockDetails(@RequestBody Stock stock) {
-		stockService.saveStockData(stock);
-		return new ResponseEntity<Stock>(stock, HttpStatus.CREATED);
+		return new ResponseEntity<>(stockService.saveStockData(stock), HttpStatus.CREATED);
+	}
+	
+	@PostMapping("/all")
+	ResponseEntity<StockList> saveAllStockDetails(@RequestBody StockList stocks) {
+		return new ResponseEntity<>(stockService.saveAllStockData(stocks), HttpStatus.CREATED);
 	}
 
 }

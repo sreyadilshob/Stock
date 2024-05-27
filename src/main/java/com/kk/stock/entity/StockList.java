@@ -12,5 +12,10 @@ public class StockList {
 	public void setStockList(List<Stock> stockList) {
 		this.stockList = stockList;
 	}
+	public StockList() {}
+	public StockList(List<Stock> stockList) {
+		this.stockList = stockList;
+	}
  
+	
 }
