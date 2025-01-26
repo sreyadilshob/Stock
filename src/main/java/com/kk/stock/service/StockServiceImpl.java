@@ -40,6 +40,10 @@ public class StockServiceImpl implements StockService {
 		return stockRepo.findAll();
 	}
 
+	public List<String> getAllStocksymbols() {
+		return stockRepo.findSymbols();
+	}
+
 	@Override
 	public Stock getStockBySymbol(String symbol) {
 		Optional<Stock> stock = stockRepo.findBySymbol(symbol);

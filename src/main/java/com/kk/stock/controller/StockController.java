@@ -16,6 +16,8 @@ import com.kk.stock.entity.StockList;
 import com.kk.stock.model.Symbols;
 import com.kk.stock.service.StockService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/stock")
 public class StockController {
@@ -33,7 +35,12 @@ public class StockController {
 	Stock getStockBySymbol(@PathVariable String symbol) {
 		return stockService.getStockBySymbol(symbol);
 	}
-	
+
+	@GetMapping("/symbols")
+	List<String> getSymbols() {
+		return stockService.getAllStocksymbols();
+	}
+
 	@GetMapping("/id/{id}")
 	Stock getStockById(@PathVariable Long id) {
 		return stockService.getStockById(id);

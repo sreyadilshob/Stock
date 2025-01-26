@@ -10,6 +10,8 @@ public interface StockService {
 
 	List<Stock> getAllStockDetails();
 
+	List<String> getAllStocksymbols();
+
 	Stock getStockBySymbol(String symbol);
 
 	Stock saveStockData(Stock stock);
