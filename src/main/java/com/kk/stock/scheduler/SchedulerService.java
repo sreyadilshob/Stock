@@ -13,7 +13,8 @@ public class SchedulerService {
 	@Autowired
     StockService stockService;
 
-	@Scheduled(cron = "30 19 * * *")
+	//second, minute, hour, day of month, month, day(s) of week
+	@Scheduled(cron = "0 30 2 * * *")
 	public void schedulerOnEvery5Minutes() {
 		System.out.println("Scheduler run ");
 		Symbols symbols = new Symbols();
