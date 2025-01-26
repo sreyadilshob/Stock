@@ -10,12 +10,14 @@
 	</parent>
 	<groupId>com.dil</groupId>
 	<artifactId>stock</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>stock</name>
 	<description>project for Spring Boot_stock</description>
 	<properties>
 		<java.version>17</java.version>
+		<spring-boot.run.jvmArguments>-Duser.timezone=UTC</spring-boot.run.jvmArguments>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -40,10 +42,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
-			<groupId>com.mysql</groupId>
-			<artifactId>mysql-connector-j</artifactId>
-			<scope>runtime</scope>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.7.4</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.apache.commons</groupId>
@@ -70,4 +73,5 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>
